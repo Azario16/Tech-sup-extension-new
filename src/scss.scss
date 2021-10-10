@@ -1,0 +1,143 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+$custom-colors: (
+    "checkbox": #ebebeb,
+    "fatal": #693a3a,
+    "customcolor": #afdbaf,
+    "primary": #0d6efd,
+    "secondary": #71797d,
+    "success": #3e9e53,
+    "info": #3389a3,
+    "warning": #c4a137 ,
+    "danger": #ab413e,
+    "light": #ffffff,
+    "dark": #3a3c3d,
+    "border": #000000,
+    "border-green": #00693e,
+);
+@import "../node_modules/bootstrap/scss/mixins";
+$theme-colors: map-merge($theme-colors, $custom-colors);
+@import "../node_modules/bootstrap/scss/utilities";
+$body-bg: #3a3c3d;
+$nav-link-color: #fff;
+$nav-link-hover-color: #c1c1c1;
+body {
+    padding-top: 4.5rem;
+}
+
+$utilities: map-merge(
+    $utilities,
+    (
+        "min-viewport-width": (
+            property: min-width,
+            class: min-vw,
+            values: (
+                100: 100vw,
+                98: 98vw,
+            ),
+        ),
+        "viewport-width": (
+            property: width,
+            class: vw,
+            values: (
+                100: 100vw,
+                95: 95vw,
+                10: 10vm,
+            ),
+        ),
+        "fs-el": (
+            property: font-size,
+            class: fs-el,
+            values: (
+                0_6: 0.6rem,
+                0_7: 0.7rem,
+                10: 10pt,
+            ),
+        ),
+        "width": (
+            property: width,
+            class: w,
+            values: (
+                10px: 10px,
+                75px: 75px,
+                100px: 100px,
+                200px: 200px,
+                300px: 300px,
+                450px: 450px,
+                620px: 620px,
+                10: 10%,
+                25: 25%,
+                50: 50%,
+                75: 75%,
+                100: 100%,
+                auto: auto,
+            ),
+        ),
+        "margin-start": (
+            responsive: true,
+            property: margin-left,
+            class: ms,
+            values:
+                map-merge(
+                    $spacers,
+                    (
+                        48rem: 48rem,
+                        auto: auto,
+                    )
+                ),
+        ),
+        "height": (
+            property: height,
+            class: h,
+            values: (
+                3em: 3em,
+                25: 25%,
+                50: 50%,
+                75: 75%,
+                100: 100%,
+                auto: auto,
+            ),
+        ),
+        "padding-btn": (
+            property: padding,
+            class: padding-btn,
+            values: (
+                0: 0,
+                10: 10,
+            ),
+        ),
+        "border-none": (
+            property: border,
+            class: border,
+            values: (
+                none: none,
+            ),
+        ),
+        "padding-top": (
+            property: padding-top,
+            class: pt,
+            values: (
+                0: 0rem,
+                1: 1rem,
+                2: 2rem,
+                3: 3rem,
+                4: 4rem,
+                5: 5rem,
+            ),
+        ),
+    )
+);
+@import "../node_modules/bootstrap/scss/root";
+
+
+
+@import "../node_modules/bootstrap/scss/grid";
+
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/badge";
+
+
+@import "../node_modules/bootstrap/scss/utilities/api";
+
