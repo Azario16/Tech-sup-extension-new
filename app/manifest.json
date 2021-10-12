@@ -117,13 +117,13 @@
         },
         {
             "js": [
-                "dist/main.js",
+                "app/autofaq/stats-people.js",
                 "autofaq_people_list.js",
                 "ticket_easy_info_window.js",
                 "autofaq_tkRequest_btn.js"
             ],
             "css": [
-                "dist/main.css",
+                "app/autofaq/stats-people.css",
                 "autofaq/patterns.css"
             ],
             "matches": [
