@@ -117,13 +117,13 @@
         },
         {
             "js": [
-                "app/autofaq/stats-people.js",
+                "autofaq/stats-people.js",
                 "autofaq_people_list.js",
                 "ticket_easy_info_window.js",
                 "autofaq_tkRequest_btn.js"
             ],
             "css": [
-                "app/autofaq/stats-people.css",
+                "autofaq/stats-people.css",
                 "autofaq/patterns.css"
             ],
             "matches": [
