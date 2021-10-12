@@ -2,8 +2,6 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import './scss.scss'
 import Colapse from 'bootstrap/js/dist/collapse.js';
- 
-
 window.onload = () => {
     //setTimeout(function () {
         head_list();

@@ -6,7 +6,6 @@ window.onload = () => {
     setTimeout(function () {
         createDivIdForReact();
         statusAutofaqPeopleRender();
-        console.log('ntcntncn')
     }, 500)
 }
 // Создаем див на странице 
@@ -27,9 +26,9 @@ function statusAutofaqPeopleRender() {
             super(props);
             this.state = {
                 //userGroup: userGroup,
-                userGroup: 'КЦ',
+                userGroup: 'ТП',
                 //userName: UserName,
-                userName: 'КЦ-Баркашева Анастасия ',
+                userName: 'ТП-Гусейнов Рахид',
                 userKbs: [],
                 error: null,
                 data: [],
@@ -60,7 +59,7 @@ function statusAutofaqPeopleRender() {
             let operStatus = this.parseStatus()
             let operStatusRender = Object.assign({}, operStatus.Online, operStatus.Busy, operStatus.Pause);
             let cCntUndistributedGroup = this.checkSumContTematicGroup()
-            console.log(this.state)
+            //console.log(this.state)
             this.setState({
                 isLoaded: true,
                 data: operState,
@@ -68,16 +67,13 @@ function statusAutofaqPeopleRender() {
                 groupCnt: cCntUndistributedGroup,
                 ArrPeople: operStatusRender
             })
-            console.log(this.state)
+            //console.log(this.state)
         }
         async getCurrentState() {
             //console.log("getCurrentState")
             try {
                 const url = window.location.origin + '/api/operators/statistic/currentState';
                 let operStateRes = await fetch(url, {
-                    /*  headers: {
-                         authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoiZDY1MGY5ZDktNTUxZC00OGMwLTkxNGItM2RlNzM3YTA0MWFhIiwibG9naW4iOiJyLmcuZ3VzZXlub3ZAc2t5ZW5nLnJ1IiwiZnVsbE5hbWUiOiIwS0xRbnkzUWs5R0QwWUhRdGRDNTBMM1F2dEN5SU5DZzBMRFJoZEM0MExRPSIsImlzQWN0aXZlIjp0cnVlLCJpc05vdGlmeSI6ZmFsc2UsInNlcnZpY2VJZCI6IjM2MWM2ODFiLTM0MGEtNGU0Ny05MzQyLWM3MzA5ZTI3ZTdiNSIsImFjdGlvbnMiOlsiUmVhc29uOE9wZXJhdG9yIiwiUmVhc29uOE9wZXJhdG9yVmlld0FsbEtCIiwiU3VwZXJ2aXNvciJdLCJlbWFpbCI6InIuZy5ndXNleW5vdkBza3llbmcucnUiLCJzZXR0aW5ncyI6eyJrbm93bGVkZ2VCYXNlcyI6WzEyMDE4MV0sImF1dG9Bc3NpZ25FbmFibGVkIjp0cnVlfX0sImV4cCI6MjkyODc3OTg3Nn0.mASzSg3HOQRyr-brrT4-Wu39vYbtd2syyam1sPqjBsw',
-                     }, */
                     method: 'GET',
                     mode: 'cors'
                 })
@@ -91,7 +87,6 @@ function statusAutofaqPeopleRender() {
         }
         parseStatus() {
             //console.log('parseStatus')
-            // Сброс нумераций операторов
             const online = this.parse('Online', this.state.userGroup);
             const busy = this.parse('Busy', this.state.userGroup);
             const pause = this.parse('Pause', this.state.userGroup);
@@ -104,11 +99,12 @@ function statusAutofaqPeopleRender() {
             return parseResult
         }
         parse(status, groupIdParse) {
-            console.log('parse')
-            console.log(status, groupIdParse)
+            //console.log('parse')
+            //console.log(status, groupIdParse)
             const userList = []
             let userInfo = {};
             // статус операторов на английском, решил в массиве сразу интерпретировать а не в момент когда буду делать строку для отправки
+            // используется для бота, здесь просто оставлю возможно пригодится
             const statusArr = {
                 Online: 'Онлайн',
                 Busy: 'Занят',
@@ -129,11 +125,6 @@ function statusAutofaqPeopleRender() {
                         if (person.cCnt === null) {
                             this.state.data[index].cCnt = 0;
                         }
-
-
-                        // нумерация операторов
-                        const name = person.operator.fullName.padEnd(30);
-                        //const stats = statusArr[status].padEnd(20);
                         userInfo = {
                             name: person.operator.fullName,
                             stats: status,
@@ -155,7 +146,7 @@ function statusAutofaqPeopleRender() {
             }
         }
         checkSumContTematicGroup() {
-            console.log('checkSumContTematicGroup')
+            //console.log('checkSumContTematicGroup')
             const listCntUndistributed = [];
             this.state.data.forEach((operatorState) => {
                 if (operatorState.operator === null) {
@@ -168,7 +159,7 @@ function statusAutofaqPeopleRender() {
             return summCnt;
         }
         render() {
-            console.log('Render')
+            //console.log('Render')
             const { error, isLoaded } = this.state;
             if (error) {
                 return <div>Ошибка: {error.message}</div>;
@@ -191,7 +182,6 @@ function statusAutofaqPeopleRender() {
                                 <div className="">
                                     {
                                         this.state.operStatus.Online.map((body, number) => {
-                                            console.log(body, number)
                                             return (
                                                 <div key={body.name} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id="823f780e-67f0-4e87-8154-a5427f9809bb" data-is-duty="false">
                                                     <div className="app-left_menu-item">
