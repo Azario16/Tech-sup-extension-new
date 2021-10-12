@@ -8,12 +8,12 @@ module.exports = {
         main: ['@babel/polyfill', './src/index.jsx']
     },
     output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: 'stats-people.js',
+        path: path.resolve(__dirname, 'app/autofaq')
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'main.css',
+            filename: 'stats-people.css',
         }),
 
     ],
