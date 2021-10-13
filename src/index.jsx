@@ -13,7 +13,7 @@ function createDivIdForReact() {
     let elm = document.createElement('li');
     document.querySelector('div[class="app-content"] > ul[role="menu"]').append(elm);
     elm.outerHTML = `
-        <li id="people_head1" class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-active" role="PeopleList">
+        <li id="people_head" class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-active" role="PeopleList">
         </li>
         `;
 }
@@ -25,10 +25,10 @@ function statusAutofaqPeopleRender() {
             const UserName = document.querySelector('.user_menu-dropdown-user_name').innerText
             super(props);
             this.state = {
-                //userGroup: userGroup,
-                userGroup: 'ТП',
-                //userName: UserName,
-                userName: 'ТП-Гусейнов Рахид',
+                userGroup: userGroup,
+                //userGroup: 'ТП',
+                userName: UserName,
+                //userName: 'ТП-Гусейнов Рахид',
                 userKbs: [],
                 error: null,
                 data: [],
@@ -234,7 +234,6 @@ function statusAutofaqPeopleRender() {
     }
 
     ReactDom.render(
-        //<Reservation />, document.querySelector('.ant-btn'),
-        <Reservation />, document.querySelector('#people_head1'),
+        <Reservation />, document.querySelector('#people_head'),
     );
 }
