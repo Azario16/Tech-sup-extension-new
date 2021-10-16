@@ -62,35 +62,6 @@ function get_operator_chats(operator_id) {
         return array;
     });
 }
-
-/* function head_list() {
-    let elm = document.createElement('li');
-    document.querySelector('div[class="app-content"] > ul[role="menu"]').append(elm);
-    elm.outerHTML = `
-    <li id="people_head" class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-active" role="PeopleList">
-        <div class="ant-menu-submenu-title" role="button" aria-expanded="true" aria-haspopup="true" style="padding-left: 16px;" aria-owns="people_list">
-            <span class="ant-badge">
-                <span role="img" aria-label="message" type="message" class="anticon anticon-message"></span>
-                <span class="nav-text">Список</span>
-            </span>
-            <i class="ant-menu-submenu-arrow"></i>
-        </div>
-        <ul id="people_list" class="ant-menu ant-menu-sub ant-menu-inline" role="people" style="display: none;"></ul>
-    </li>`;//ant-menu-submenu-open
- 
-    document.getElementById('people_head').firstElementChild.onclick = () => {
-        let list = document.getElementById('people_list');
-        let head = document.getElementById('people_head');
-        if (list.style.display == 'none') {
-            list.style.display = '';
-            head.style = 'ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open';
-        } else {
-            list.style.display = 'none';
-            head.style = 'ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-active';
-        }
-    }
-} */
-
 function get_duty() {
     let result = new Promise(function (resolve, reject) {
         chrome.runtime.sendMessage({ name: "script_pack", question: 'duty_info' }, function (response) {
