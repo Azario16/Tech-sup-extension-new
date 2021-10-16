@@ -41,7 +41,6 @@ function get_state() {
         return array;
     });
 }
-console.log('get_operator_chats')
 function get_operator_chats(operator_id) {
     let result = new Promise(function (resolve, reject) {
         fetch("https://skyeng.autofaq.ai/api/conversations/history", {
@@ -128,8 +127,7 @@ async function make_list() {
         people = duty + people;
     }
 }
-function getImport(id){
-    console.log(id)
+function getOperatorChatImport(id){
     get_operator_chats(id).then(r => {
         if (r.items && r.items.length > 0) {
             second_step();
@@ -506,5 +504,5 @@ function sidebar_css() {
     document.head.append(style)
 }
 
-export { getImport };
+export { getOperatorChatImport };
 //Sidebar --END--

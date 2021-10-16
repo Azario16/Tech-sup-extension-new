@@ -2,10 +2,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import './scss.scss'
 import Colapse from 'bootstrap/js/dist/collapse.js';
-import {getImport} from './../app/autofaq_people_list.js'
-console.log(getImport)
-
-
+import {getOperatorChatImport} from './../app/autofaq_people_list.js'
 
 window.onload = () => {
     setTimeout(async function () {
@@ -196,7 +193,7 @@ async function statusAutofaqPeopleRender() {
                                     {
                                         this.state.operStatus.Online.map((body, number) => {
                                             return (
-                                                <div key={body.name} onClick={getImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
+                                                <div key={body.name} onClick={getOperatorChatImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
                                                     <div className="app-left_menu-item">
                                                         <div className={this.state.class[body.stats] + " asign-slot-box fs-el-0_7 badge rounded-pill col-auto row g-0 badge border border-3 border-border-green"}>{body.sCnt}</div>
                                                         <span className="">
@@ -211,7 +208,7 @@ async function statusAutofaqPeopleRender() {
                                     {
                                         this.state.operStatus.Busy.map(body => {
                                             return (
-                                                <div key={body.name} onClick={getImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
+                                                <div key={body.name} onClick={getOperatorChatImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
                                                     <div className="app-left_menu-item">
                                                         <div className={this.state.class[body.stats] + " asign-slot-box fs-el-0_7 badge rounded-pill col-auto row g-0 badge border border-3 border-border-green"}>{body.sCnt}</div>
                                                         <span className="">
@@ -225,7 +222,7 @@ async function statusAutofaqPeopleRender() {
                                     {
                                         this.state.operStatus.Pause.map((body, number) => {
                                             return (
-                                                <div key={body.name} onClick={getImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
+                                                <div key={body.name} onClick={getOperatorChatImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
                                                     <div className="app-left_menu-item">
                                                         <div className={this.state.class[body.stats] + " asign-slot-box fs-el-0_7 badge rounded-pill col-auto row g-0 badge border border-3 border-border-green"}>{body.sCnt}</div>
                                                         <span className="">
