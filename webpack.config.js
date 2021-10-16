@@ -9,7 +9,7 @@ module.exports = {
     },
     output: {
         filename: 'stats-people.js',
-        path: path.resolve(__dirname, 'app/autofaq')
+        path: path.resolve(__dirname, './app/autofaq')
     },
     plugins: [
         new MiniCssExtractPlugin({

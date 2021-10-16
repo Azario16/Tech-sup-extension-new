@@ -2,10 +2,16 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import './scss.scss'
 import Colapse from 'bootstrap/js/dist/collapse.js';
+import {getImport} from './../app/autofaq_people_list.js'
+console.log(getImport)
+
+
+
 window.onload = () => {
-    setTimeout(function () {
+    setTimeout(async function () {
+        
         createDivIdForReact();
-        statusAutofaqPeopleRender();
+        await statusAutofaqPeopleRender();
     }, 500)
 }
 // Создаем див на странице 
@@ -17,8 +23,11 @@ function createDivIdForReact() {
         </li>
         `;
 }
-
-function statusAutofaqPeopleRender() {
+function get_operator_chats(test){
+    console.log(test)
+    console.log("Run")
+}
+async function statusAutofaqPeopleRender() {
     class Reservation extends React.Component {
         constructor(props) {
             const userGroup = document.querySelector('.user_menu-dropdown-user_name').innerText.split('-')[0];
@@ -51,7 +60,10 @@ function statusAutofaqPeopleRender() {
             this.renderTimeout()
             setInterval(this.renderTimeout.bind(this), 15000)
         }
-
+        get_operator_chats(test){
+            console.log(test)
+            console.log("Run")
+        }
         async renderTimeout() {
             //console.log('renderTimeout')
 
@@ -127,6 +139,7 @@ function statusAutofaqPeopleRender() {
                         }
                         userInfo = {
                             name: person.operator.fullName,
+                            id: person.operator.id,
                             stats: status,
                             aCnt: this.state.data[index].aCnt,
                             cCnt: this.state.data[index].cCnt,
@@ -183,7 +196,7 @@ function statusAutofaqPeopleRender() {
                                     {
                                         this.state.operStatus.Online.map((body, number) => {
                                             return (
-                                                <div key={body.name} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id="823f780e-67f0-4e87-8154-a5427f9809bb" data-is-duty="false">
+                                                <div key={body.name} onClick={getImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
                                                     <div className="app-left_menu-item">
                                                         <div className={this.state.class[body.stats] + " asign-slot-box fs-el-0_7 badge rounded-pill col-auto row g-0 badge border border-3 border-border-green"}>{body.sCnt}</div>
                                                         <span className="">
@@ -198,7 +211,7 @@ function statusAutofaqPeopleRender() {
                                     {
                                         this.state.operStatus.Busy.map(body => {
                                             return (
-                                                <div key={body.name} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id="823f780e-67f0-4e87-8154-a5427f9809bb" data-is-duty="false">
+                                                <div key={body.name} onClick={getImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
                                                     <div className="app-left_menu-item">
                                                         <div className={this.state.class[body.stats] + " asign-slot-box fs-el-0_7 badge rounded-pill col-auto row g-0 badge border border-3 border-border-green"}>{body.sCnt}</div>
                                                         <span className="">
@@ -212,7 +225,7 @@ function statusAutofaqPeopleRender() {
                                     {
                                         this.state.operStatus.Pause.map((body, number) => {
                                             return (
-                                                <div key={body.name} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id="823f780e-67f0-4e87-8154-a5427f9809bb" data-is-duty="false">
+                                                <div key={body.name} onClick={getImport.bind(this, body.id)} className="ant-menu-item ant-menu-item-only-child" role="people" title="" data-link="" data-user-id={body.id} data-is-duty="false">
                                                     <div className="app-left_menu-item">
                                                         <div className={this.state.class[body.stats] + " asign-slot-box fs-el-0_7 badge rounded-pill col-auto row g-0 badge border border-3 border-border-green"}>{body.sCnt}</div>
                                                         <span className="">

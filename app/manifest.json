@@ -1,6 +1,6 @@
 {
     "name": "Script Package",
-    "version": "0.6.26",
+    "version": "0.6.27",
     "description": "Сборник скриптов для быстрого доступа к ресурсам: ://.skyeng.ru/* , ://datsy.ru/, ://skyeng.autofaq.ai/, ://skyeng.omnidesk.ru/*",
     "manifest_version": 2,
     "icons": {
@@ -118,7 +118,6 @@
         {
             "js": [
                 "autofaq/stats-people.js",
-                "autofaq_people_list.js",
                 "ticket_easy_info_window.js",
                 "autofaq_tkRequest_btn.js"
             ],

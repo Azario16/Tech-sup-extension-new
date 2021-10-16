@@ -58,6 +58,7 @@ function parse(status, groupIdParse) {
                 userInfo = {
                     name: person.operator.fullName,
                     stats: status,
+                    id:person.operator.id,
                     aCnt: operStats[index].aCnt,
                     cCnt: operStats[index].cCnt,
                     sCnt: operStats[index].aCnt + operStats[index].cCnt,
