@@ -35,7 +35,7 @@ async function statusAutofaqPeopleRender() {
         }
         getStepUuid(elm) {
             console.log(elm)
-            const stepName = document.querySelector(".title").innerText
+            const stepName = document.querySelector('[class="title"] > span.title').innerText
             console.log(stepName)
             this.state.data.map((body, count) => {
                 if (body.contentCard.name == stepName) {
