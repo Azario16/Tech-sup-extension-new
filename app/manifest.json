@@ -1,6 +1,6 @@
 {
     "name": "Script Package",
-    "version": "0.6.28",
+    "version": "0.6.29",
     "description": "Сборник скриптов для быстрого доступа к ресурсам: ://.skyeng.ru/* , ://datsy.ru/, ://skyeng.autofaq.ai/, ://skyeng.omnidesk.ru/*",
     "manifest_version": 2,
     "icons": {
@@ -16,6 +16,17 @@
         "persistent": false
     },
     "content_scripts": [
+        {
+            "js": [
+                "cms-step/app.js"
+            ],
+            "css": [
+                "cms-step/stats-people.css"
+            ],
+            "matches": [
+                "*://vimbox.skyeng.ru/kids/english/room/*"
+            ]
+        },
         {
             "js": [
                 "timetable.js"

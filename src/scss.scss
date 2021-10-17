@@ -21,9 +21,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 $body-bg: #3a3c3d;
 $nav-link-color: #fff;
 $nav-link-hover-color: #c1c1c1;
-body {
-    padding-top: 4.5rem;
-}
+
 
 $utilities: map-merge(
     $utilities,
