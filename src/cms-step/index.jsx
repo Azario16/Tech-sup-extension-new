@@ -62,10 +62,13 @@ async function statusAutofaqPeopleRender() {
                 })
                 let roomInfo = await roomInfoRes.json();
                 console.log(roomInfo)
-                this.state.data = roomInfo['homeworkCards'];
+                let roomHW = roomInfo['homeworkCards'];
+                let roomLesson = roomInfo['lessonCards'];
+                let roomConcat = roomHW.concat(roomLesson)
+                
                 this.setState({
                     isLoaded: true,
-                    data: roomInfo['homeworkCards']
+                    data: roomConcat
                 })
                 return roomInfo['homeworkCards'];
             } catch (error) {
