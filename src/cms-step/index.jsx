@@ -49,31 +49,27 @@ async function statusAutofaqPeopleRender() {
                 navigator.clipboard.writeText(text);
             }
             function colorButton(elm) {
-                elm.target.className ="btn"
+                elm.target.className = "btn"
             }
         }
         async getRoomInfo() {
             //console.log("getRoomInfo")
-            try {
-                const url = `https://api-english.skyeng.ru/api/v1/rooms/${this.state.room}`;
-                let roomInfoRes = await fetch(url, {
-                    method: 'GET',
-                    credentials: 'include'
-                })
-                let roomInfo = await roomInfoRes.json();
-                console.log(roomInfo)
-                let roomHW = roomInfo['homeworkCards'];
-                let roomLesson = roomInfo['lessonCards'];
-                let roomConcat = roomHW.concat(roomLesson)
-                
-                this.setState({
-                    isLoaded: true,
-                    data: roomConcat
-                })
-                return roomInfo['homeworkCards'];
-            } catch (error) {
-                this.setState({ error });
-            }
+            const url = `https://api-english.skyeng.ru/api/v1/rooms/${this.state.room}`;
+            let roomInfoRes = await fetch(url, {
+                method: 'GET',
+                credentials: 'include'
+            })
+            let roomInfo = await roomInfoRes.json();
+            console.log(roomInfo)
+            let roomHW = roomInfo['homeworkCards'];
+            let roomLesson = roomInfo['lessonCards'];
+            let roomConcat = roomHW.concat(roomLesson)
+
+            this.setState({
+                isLoaded: true,
+                data: roomConcat
+            })
+            return roomInfo['homeworkCards'];
         }
         render() {
             //console.log('Render')
