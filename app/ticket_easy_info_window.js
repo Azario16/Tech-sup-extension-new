@@ -417,7 +417,7 @@ async function get_info(type) { //v.2
                         document.getElementById('student_login').style.backgroundColor = 'orange';
                         chrome.runtime.sendMessage({name: "script_pack", question: 'get_login_link', id: id}, function(response) {
                             if (response.answer.success === true) {
-                                TrueCopyToClipboard(response.answer.data.link);
+                                TrueCopyToClipboard(response.answer.loginLink);
                                 document.getElementById('student_login').style.backgroundColor = 'green';
                             } else {
                                 document.getElementById('student_login').style.backgroundColor = 'red';
@@ -591,7 +591,7 @@ async function get_info(type) { //v.2
                         document.getElementById('student_login').style.backgroundColor = 'orange';
                         chrome.runtime.sendMessage({name: "script_pack", question: 'get_login_link', id: id}, function(response) {
                             if (response.answer.success === true) {
-                                TrueCopyToClipboard(response.answer.data.link);
+                                TrueCopyToClipboard(response.answer.loginLink);
                                 document.getElementById('student_login').style.backgroundColor = 'green';
                             } else {
                                 document.getElementById('student_login').style.backgroundColor = 'red';
@@ -641,7 +641,7 @@ function teacher_draw(id) {
         document.getElementById('teacher_login').style.backgroundColor = 'orange';
         chrome.runtime.sendMessage({name: "script_pack", question: 'get_login_link', id: id}, function(response) {
             if (response.answer.success === true) {
-                TrueCopyToClipboard(response.answer.data.link);
+                TrueCopyToClipboard(response.answer.loginLink);
                 document.getElementById('teacher_login').style.backgroundColor = 'green';
             } else {
                 document.getElementById('teacher_login').style.backgroundColor = 'red';
@@ -753,7 +753,7 @@ function crm2_teacher_draw(id) {
         document.getElementById(`teacher_login_${id}`).style.backgroundColor = 'orange';
         chrome.runtime.sendMessage({ name: "script_pack", question: 'get_login_link', id: id }, function (response) {
             if (response.answer.success === true) {
-                TrueCopyToClipboard(response.answer.data.link);
+                TrueCopyToClipboard(response.answer.loginLink);
                 document.getElementById(`teacher_login_${id}`).style.backgroundColor = 'green';
             } else {
                 document.getElementById(`teacher_login_${id}`).style.backgroundColor = 'red';
