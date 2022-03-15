@@ -127,7 +127,7 @@ async function make_list() {
         people = duty + people;
     }
 }
-function getOperatorChatImport(id){
+function getOperatorChatImport(id) {
     get_operator_chats(id).then(r => {
         if (r.items && r.items.length > 0) {
             second_step();
@@ -156,7 +156,7 @@ function equals(...items) {
 
 //Sidebar --START--
 
-function get_history_chat(chat_id) {
+function get_history_chat(chat_id, start, end) {
     let result = new Promise(function (resolve, reject) {
         fetch(`https://skyeng.autofaq.ai/api/conversations/${chat_id}`, {
             "headers": {
@@ -175,13 +175,15 @@ function get_history_chat(chat_id) {
     });
 }
 
-function get_chats_by_id(id_user) {
+function get_chats_by_id(id_user, start, end) {
+    // const startForamte = dateFormate(start)
+    // const endForamte = dateFormate(end)
     let result = new Promise(function (resolve, reject) {
         fetch(`https://skyeng.autofaq.ai/api/conversations/history`, {
             "headers": {
                 "content-type": "application/json",
             },
-            "body": `{\"serviceId\":\"361c681b-340a-4e47-9342-c7309e27e7b5\",\"mode\":\"Json\",\"channelUserFullTextLike\":\"${id_user}\",\"tsFrom\":\"2021-06-01T19:00:00.000Z\",\"tsTo\":\"2022-03-01T18:59:59.059Z\",\"orderBy\":\"ts\",\"orderDirection\":\"Desc\",\"page\":1,\"limit\":10}`,
+            "body": `{\"serviceId\":\"361c681b-340a-4e47-9342-c7309e27e7b5\",\"mode\":\"Json\",\"channelUserFullTextLike\":\"${id_user}\",\"tsFrom\":\"${start}T00:00:00.000Z\",\"tsTo\":\"${end}T23:59:59.059Z\",\"orderBy\":\"ts\",\"orderDirection\":\"Desc\",\"page\":1,\"limit\":10}`,
             "method": "POST",
             "credentials": "include"
         })
@@ -223,8 +225,8 @@ function get_used_chat(chat_id, operator_id = say_my_name.id) {
     });
 }
 
-function draw_chat(id, type = 0) {
-    get_history_chat(id) //'1559977__370534916'
+function draw_chat(id, start, end, type = 0) {
+    get_history_chat(id, start, end) //'1559977__370534916'
         .then(r => {
             if (type == 1) {
                 document.querySelector('#search').style.display = 'none';
@@ -381,6 +383,7 @@ function first_step() {
 }
 
 function second_step() {
+    const { nowDateFormate, backDateFormate } = getNowAndBackDate()
     var block = document.querySelector('#side_bar');
     block.outerHTML = `
         <aside id="side_bar">
@@ -394,6 +397,12 @@ function second_step() {
                     <span><input id="user_id" placeholder="ID пользователя"></span>
                     <span><input id="chat_id" placeholder="ID чата"></span>
                 </div>
+                <div style="margin-top: 4px; z-index: 3; position: relative;">
+                    <label for="date_start">От</label>
+                    <span><input type="date" id="date_start" value="${ backDateFormate }" placeholder="От"></span>
+                    <label for="date_end">До</label>
+                    <span><input type="date" id="date_end" value="${ nowDateFormate }" placeholder="До чата"></span> 
+                </div>
                 <div id="msg_block">
                     <!-- блок чатов и сообщений \ контент -->
                 </div>
@@ -406,9 +415,9 @@ function second_step() {
     //кнопка поиска нажата
     document.querySelector('#search').onclick = () => {
         if (chat_id.value !== '' && user_id.value === '') {
-            draw_chat(chat_id.value);
+            draw_chat(chat_id.value, date_start.value, date_end.value);
         } else if (chat_id.value === '' && user_id.value !== '') {
-            get_chats_by_id(user_id.value)
+            get_chats_by_id(user_id.value, date_start.value, date_end.value)
                 .then(r => {
                     if (r.items && r.items.length > 0) {
                         window.backup = r;
@@ -503,6 +512,31 @@ function sidebar_css() {
             }`;
     document.head.append(style)
 }
+
+const OPTION = {
+    timeZone: 'Europe/Moscow',
+};
+
+function getNowAndBackDate() {
+
+    const nowDate = new Date();
+    const nowDateFormate = nowDate.toLocaleDateString('ru-Ru', OPTION).split('.').reverse().join('-')
+
+    nowDate.setDate(nowDate.getDate() - 30);
+    const backDateFormate = nowDate.toLocaleDateString('ru-Ru', OPTION).split('.').reverse().join('-')
+
+    let dateMessage = nowDate.toLocaleDateString('ru-Ru', OPTION).split('.')
+    dateMessage = `${dateMessage[0]}.${dateMessage[1]}`
+    console.log(nowDateFormate)
+    console.log(backDateFormate)
+    return { nowDateFormate, backDateFormate, dateMessage }
+}
+
+function dateFormate(date){
+    const formate = date.split('.').reverse.join('-')
+    return formate
+}
+
 
 export { getOperatorChatImport };
 //Sidebar --END--

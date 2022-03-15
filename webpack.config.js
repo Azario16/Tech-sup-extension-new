@@ -5,11 +5,14 @@ const isDev = process.env.NODE_ENV === 'development'
 module.exports = {
     mode: 'development',
     entry: {
-        main: ['@babel/polyfill', './src/cms-step/index.jsx']
+        // main: ['@babel/polyfill', './src/cms-step/index.jsx']
+        main: ['@babel/polyfill', './src/index.jsx']
     },
     output: {
-        filename: 'app.js',
-        path: path.resolve(__dirname, './app/cms-step')
+        // filename: 'app.js',
+        filename: 'stats-people.js',
+        // path: path.resolve(__dirname, './app/cms-step')
+        path: path.resolve(__dirname, './app/autofaq')
     },
     plugins: [
         new MiniCssExtractPlugin({
