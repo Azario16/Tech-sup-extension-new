@@ -410,7 +410,7 @@ async function get_info(type) { //v.2
 
                     info_status.lastElementChild.children[2].innerText = role;
                     document.getElementById('student_edit').onclick = function () {
-                        window.open('https://id.skyeng.ru/admin/users/' + id + '/update', '_blank');
+                        window.open('https://id.skyeng.ru/admin/users/' + id + '/update-contacts', '_blank');
                     }
 
                     document.getElementById('student_login').onclick = function () {
@@ -584,7 +584,7 @@ async function get_info(type) { //v.2
                     document.querySelector("#info_student_status").style.display = 'none'; //скрыть кнопки с svg: расписания, профиля, комментария, добавления в историю
 
                     document.getElementById('student_edit').onclick = function () {
-                        window.open('https://id.skyeng.ru/admin/users/' + id + '/update', '_blank');
+                        window.open('https://id.skyeng.ru/admin/users/' + id + '/update-contacts', '_blank');
                     }
 
                     document.getElementById('student_login').onclick = function () {
@@ -649,7 +649,7 @@ function teacher_draw(id) {
         });
     }
     document.getElementById('teacher_edit').onclick = function () {
-        window.open('https://id.skyeng.ru/admin/users/' + id + '/update', '_blank');
+        window.open('https://id.skyeng.ru/admin/users/' + id + '/update-contacts', '_blank');
     }
    
     //Easy timetable start
@@ -761,7 +761,7 @@ function crm2_teacher_draw(id) {
         });
     }
     document.getElementById(`teacher_edit_${id}`).onclick = function () {
-        window.open('https://id.skyeng.ru/admin/users/' + id + '/update', '_blank');
+        window.open('https://id.skyeng.ru/admin/users/' + id + '/update-contacts', '_blank');
     }
     
     //Easy timetable start
